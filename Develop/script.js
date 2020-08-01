@@ -1,14 +1,16 @@
 // Assignment Code
-var generateBtn = document.querySelector("#generate");
+// var generateBtn = document.querySelector("#generate").value;
 
-// Write password to the #password input
-function writePassword() {
-  var password = generatePassword();
-  var passwordText = document.querySelector("#password");
+// // Write password to the #password input
+// // function writePassword() {
+// //   var password = generatePassword();
+// //   var $passwordText = document.querySelector("#password");
 
-  passwordText.value = password;
+// //   passwordText.value = password;
 
-}
+// // }
+document.getElementById("#generate").onclick = generatePassword ()
+chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890!@#%^&*+"
 
 function generatePassword() {
   var passwordLength = prompt('Please specify a password length more than 8 and less than 128')
@@ -17,18 +19,22 @@ function generatePassword() {
     return;
   }
 
-  var lowercase = confirm('Do you want lowercase?')
-  var uppercase = confirm('Do you want uppercase?')
-  var symbol = confirm('Do you want a symbol')
-  var number = confirm('Do you want a number?')
+  var lowercase = confirm('Do you want lowercase?');
+  var uppercase = confirm('Do you want uppercase?');
+  var symbol = confirm('Do you want a symbol');
+  var number = confirm('Do you want a number?');
 
-  if (lowercase === true || uppercase === true || symbol === true || number === true) {
-    
+  function createPassword () {
+    if (lowercase === true || uppercase === true || symbol === true || number === true) {
+      for (var i = 0; i < passwordLength; i++) {
+        var rnum = Math.floor(Math.random() * chars.length);
+        passwordLength += chars.substring(rnum,rnum+1);
+      }
+    } else {
+      prompt('Your password needs all the variables');
+      return;
+    }
   }
-
-
-  
 }
 
-// Add event listener to generate button
-generateBtn.addEventListener("click", writePassword);
+document.getElementById("#newPassword").textContent = createPassword()
