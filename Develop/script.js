@@ -45,14 +45,16 @@ function generatePassword() {
   } while (newPassword.length < length) {
     // newPassword += allArrays[(Math.floor(Math.random() * 3))];
     
-    
     for (i = 0; i < 4; i++){
-      
-      
+    
       newPassword += allArrays[i];
       console.log(newPassword);
     }
   } 
+  var $newPassword = document.querySelector("#password");
+  $newPassword.textContent = newPassword
 }
 // it will generate a random password up to this point
-document.getElementById('#newPasswoed').innerHTML = newPassword
+
+
+
