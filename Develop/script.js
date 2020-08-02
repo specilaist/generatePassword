@@ -52,7 +52,7 @@ function generatePassword() {
     }
   } 
   var $newPassword = document.querySelector("#password");
-  $newPassword.textContent = newPassword
+  $newPassword.textContent = "Here is your new Password: " + newPassword
 }
 // it will generate a random password up to this point
 
