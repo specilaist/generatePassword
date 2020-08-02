@@ -9,8 +9,14 @@
 // //   passwordText.value = password;
 
 // // }
-document.getElementById("#generate").onclick = generatePassword ()
-chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890!@#%^&*+"
+letters = "abcdefghijklmnopqrstuvwxyz"
+capitals = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+numbers = "1234567890"
+symbols = "!?~@#%^&*+"
+
+function clickFunction() {
+  document.getElementById("#generate").click();
+}
 
 function generatePassword() {
   var passwordLength = prompt('Please specify a password length more than 8 and less than 128')
@@ -29,6 +35,7 @@ function generatePassword() {
       for (var i = 0; i < passwordLength; i++) {
         var rnum = Math.floor(Math.random() * chars.length);
         passwordLength += chars.substring(rnum,rnum+1);
+        console.log(createPassword())
       }
     } else {
       prompt('Your password needs all the variables');
@@ -36,5 +43,3 @@ function generatePassword() {
     }
   }
 }
-
-document.getElementById("#newPassword").textContent = createPassword()
