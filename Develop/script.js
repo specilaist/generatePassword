@@ -2,19 +2,26 @@
 // Split the strings into arrays
 const letters = "abcdefghijklmnopqrstuvwxyz";
 var arrletters = letters.split('');
+var randomletters = arrletters[(Math.floor(Math.random() * 26))]
 
 const capitals = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 var arrCapitals = capitals.split('');
+var randomCapitals = arrCapitals[(Math.floor(Math.random() * 26))]
 
 const numbers = "1234567890";
 var arrNumbers = numbers.split('');
+var randomNumbers = arrNumbers[(Math.floor(Math.random() * 10))]
 
 const symbols = "!?~@#%^&*+";
 var arrSymbols = symbols.split('');
+var randomSymbols = arrSymbols[(Math.floor(Math.random() * 10))]
 
-allArrays = ['arrletters', 'arrCapitals', 'arrNumbers', 'arrSymbols'];
-// var randomLetter = [Math.floor(Math.random() * x.length)];
+// created an array for the arrays
+var allArrays = [randomletters, randomCapitals, randomNumbers, randomSymbols];
+var randomInt = allArrays[(Math.floor(Math.random() * 3))]
+console.log(randomInt)
 
+// empty variable for new password
 var newPassword = "";
 
 // When I click it, it works
@@ -24,33 +31,28 @@ function clickFunction() {
 
 // asks to give a length for the password
 function generatePassword() {
-  var passwordLength = prompt('Please specify a password length more than 8 and less than 128')
+  const passwordLength = prompt('Please specify a password length more than 8 and less than 128');
   if (passwordLength < 8 || passwordLength > 128) {
     alert('you need to have a number > 8 and < 128');
+    return;
   } else {
+    var length = Number(passwordLength)
     var lowercase = confirm('Do you want lowercase');
     var uppercase = confirm('Do you want uppercase?');
     var symbol = confirm('Do you want a symbol');
     var number = confirm('Do you want a number?');
-  }
-}
-
-
-function createPassword () {
-  if (lowercase === true || uppercase === true || symbol === true || number === true) {
-    for (var i = 0; i < passwordLength.length; i++) {
-        var rnum = passwordLength[Math.floor(Math.random() * passwordLength.length)];
-        
-      } 
-  } else {
-    prompt('Your password needs all the variables');
-    return;
+    console.log(length);
+  } while (newPassword.length < length) {
+    // newPassword += allArrays[(Math.floor(Math.random() * 3))];
+    
+    
+    for (i = 0; i < 4; i++){
+      
+      
+      newPassword += allArrays[i];
+      console.log(newPassword);
     }
-  }
-
-while (newPassword.length < passwordLength) {
-  newPassword += createPassword();
-  newPassword++;
+  } 
 }
-
-document.getElementById('#newpassword').text = newPassword
+// it will generate a random password up to this point
+document.getElementById('#newPasswoed').innerHTML = newPassword
